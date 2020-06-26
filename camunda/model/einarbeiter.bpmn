@@ -4,8 +4,7 @@
     <bpmn:scriptTask id="Activity_0w48pi0" name="initVariables" camunda:asyncBefore="true" scriptFormat="Javascript">
       <bpmn:incoming>Flow_0reoiv3</bpmn:incoming>
       <bpmn:outgoing>Flow_0kbcdbt</bpmn:outgoing>
-      <bpmn:script>
-execution.setVariable('isRelevantProcessType',false);
+      <bpmn:script>execution.setVariable('isRelevantProcessType',false);
 execution.setVariable('processType','');
 execution.setVariable('isInstanceExisting', false);
 execution.setVariable('isRetryUpdate', false);
@@ -35,7 +34,12 @@ execution.setVariable('bn', brokerName);</bpmn:script>
       <bpmn:outgoing>Flow_11gkxjz</bpmn:outgoing>
       <bpmn:outgoing>Flow_08ps4xl</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="Activity_19j8ggt" name="updateFachprozess" camunda:type="external" camunda:topic="update-process">
+    <bpmn:serviceTask id="Activity_19j8ggt" name="updateFachprozess" camunda:class="">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Input_1rlfiva" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_14447n5</bpmn:incoming>
       <bpmn:incoming>Flow_0lsvqve</bpmn:incoming>
       <bpmn:outgoing>Flow_0mje7ub</bpmn:outgoing>
@@ -125,6 +129,18 @@ execution.setVariable("isRelevantProcessType", true)
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="einarbeiter">
+      <bpmndi:BPMNEdge id="Flow_1qx5k6l_di" bpmnElement="Flow_1qx5k6l">
+        <di:waypoint x="950" y="120" />
+        <di:waypoint x="997" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1v3a3qu_di" bpmnElement="Flow_1v3a3qu">
+        <di:waypoint x="950" y="240" />
+        <di:waypoint x="975" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04el2cw_di" bpmnElement="Flow_04el2cw">
+        <di:waypoint x="570" y="240" />
+        <di:waypoint x="612" y="240" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0reoiv3_di" bpmnElement="Flow_0reoiv3">
         <di:waypoint x="188" y="240" />
         <di:waypoint x="220" y="240" />
@@ -219,18 +235,9 @@ execution.setVariable("isRelevantProcessType", true)
         <di:waypoint x="320" y="240" />
         <di:waypoint x="350" y="240" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_04el2cw_di" bpmnElement="Flow_04el2cw">
-        <di:waypoint x="570" y="240" />
-        <di:waypoint x="612" y="240" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1v3a3qu_di" bpmnElement="Flow_1v3a3qu">
-        <di:waypoint x="950" y="240" />
-        <di:waypoint x="975" y="240" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1qx5k6l_di" bpmnElement="Flow_1qx5k6l">
-        <di:waypoint x="950" y="120" />
-        <di:waypoint x="997" y="120" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0w48pi0_di" bpmnElement="Activity_0w48pi0">
+        <dc:Bounds x="220" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0duxuy3_di" bpmnElement="Gateway_0duxuy3" isMarkerVisible="true">
         <dc:Bounds x="1519" y="325" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -255,6 +262,15 @@ execution.setVariable("isRelevantProcessType", true)
       <bpmndi:BPMNShape id="Event_09jfpcz_di" bpmnElement="Event_09jfpcz">
         <dc:Bounds x="997" y="102" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1spmz23_di" bpmnElement="Activity_1spmz23">
+        <dc:Bounds x="1116" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0sersr2_di" bpmnElement="Gateway_0sersr2" isMarkerVisible="true">
+        <dc:Bounds x="975" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="960" y="191" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0m3vk83_di" bpmnElement="Activity_0m3vk83">
         <dc:Bounds x="713" y="200" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -267,6 +283,9 @@ execution.setVariable("isRelevantProcessType", true)
           <dc:Bounds x="606" y="275" width="61" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qvbc8n_di" bpmnElement="Activity_0qvbc8n">
+        <dc:Bounds x="350" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_09490cg_di" bpmnElement="Event_09490cg">
         <dc:Bounds x="1615" y="332" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -276,23 +295,8 @@ execution.setVariable("isRelevantProcessType", true)
       <bpmndi:BPMNShape id="Event_0wdym38_di" bpmnElement="Event_0wdym38">
         <dc:Bounds x="152" y="222" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0w48pi0_di" bpmnElement="Activity_0w48pi0">
-        <dc:Bounds x="220" y="200" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0qvbc8n_di" bpmnElement="Activity_0qvbc8n">
-        <dc:Bounds x="350" y="200" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_13bepu2_di" bpmnElement="init">
         <dc:Bounds x="470" y="200" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1spmz23_di" bpmnElement="Activity_1spmz23">
-        <dc:Bounds x="1116" y="200" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0sersr2_di" bpmnElement="Gateway_0sersr2" isMarkerVisible="true">
-        <dc:Bounds x="975" y="215" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="960" y="191" width="79" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0tngsbp_di" bpmnElement="mustLookup">
         <dc:Bounds x="850" y="200" width="100" height="80" />

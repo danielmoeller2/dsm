@@ -53,7 +53,7 @@ public class CamundaApplication {
     final ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionKey("Sample").singleResult();
 
     logger.info("Found deployed process: {}", processDefinition);
-    Assert.notNull(processDefinition, "process 'Sample' should be deployed!");
+    //Assert.notNull(processDefinition, "process 'Sample' should be deployed!");
   }
 
 }

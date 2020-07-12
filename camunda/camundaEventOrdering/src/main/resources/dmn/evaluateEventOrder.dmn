@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_0sdb0dz" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
+  <decision id="evaluateEventOrder" name="Evaluate Event Order">
+    <decisionTable id="DecisionTable_0x2k0h4">
+      <input id="InputClause_1rjlm1a" label="event.Source">
+        <inputExpression id="LiteralExpression_0tz8vjf" typeRef="string">
+          <text>eventSource</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_084cy5q" label="event.Name">
+        <inputExpression id="LiteralExpression_0gdf84a" typeRef="string">
+          <text>eventName</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="signalName" name="signalName" typeRef="string" />
+      <rule id="DecisionRule_1ton5ob">
+        <inputEntry id="UnaryTests_1sxr4bp">
+          <text>"DSS"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tx1fpa">
+          <text>"start"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1u8snq5">
+          <text>"event1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n56hys">
+        <inputEntry id="UnaryTests_1tyjqnq">
+          <text>"DMSManager"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11ybiiy">
+          <text>"ABS"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y19mt3">
+          <text>"event2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o9nw70">
+        <inputEntry id="UnaryTests_00uhmry">
+          <text>"DMSManager"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07v3war">
+          <text>"legacy"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13vwa6o">
+          <text>"event2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_161ris5">
+        <inputEntry id="UnaryTests_1hhak0j">
+          <text>"ABS"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dzmfx1">
+          <text>"termin_angelegt"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kmt6nr">
+          <text>"event3"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07arsaq">
+        <inputEntry id="UnaryTests_1mfzk74">
+          <text>"ABS"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ltxn63">
+          <text>"termin_erledigt"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xl51md">
+          <text>"event4"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_130re1l">
+      <dmndi:DMNShape id="DMNShape_0cklc9k" dmnElementRef="evaluateEventOrder">
+        <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

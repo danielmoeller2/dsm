@@ -1,0 +1,221 @@
+### Start process with businessKey, which should be unique
+POST /engine-rest/process-definition/key/event_dispatcher_sort_order_1/start HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	
+ 	"businessKey" : "4714"
+}
+
+
+### Send unknown dispatching-Event
+# @name sendMessage
+POST /engine-rest/message HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "messageName" : "dispatchEvent",
+  "businessKey" : "4714",
+  "processVariables" : {
+    "event" : {"value" : "<?xml version='1.0' encoding='UTF-8'?><event><name>cancel</name><source>DSS</source><creationTS>2020-07-01T09:00:00</creationTS><correlationIDs><vsnr>4711</vsnr></correlationIDs></event>", 
+               "type": "String"}
+  },
+  "resultEnabled" : true,
+  "variablesInResultEnabled" : true
+}
+
+### Send DSS Event
+# @name sendMessage
+POST /engine-rest/message HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "messageName" : "dispatchEvent",
+  "businessKey" : "4714",
+  "processVariables" : {
+    "event" : {"value" : "<?xml version='1.0' encoding='UTF-8'?><event><name>start</name><source>DSS</source><creationTS>2020-07-01T09:00:00</creationTS><correlationIDs><vsnr>4711</vsnr></correlationIDs></event>", 
+               "type": "String"}
+  },
+  "resultEnabled" : true,
+  "variablesInResultEnabled" : true
+}
+
+### Send DMS Manager Event
+# @name sendMessage
+POST /engine-rest/message HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "messageName" : "dispatchEvent",
+  "businessKey" : "4714",
+  "processVariables" : {
+    "event" : {"value" : "<?xml version='1.0' encoding='UTF-8'?><event><name>ABS</name><source>DMSManager</source><creationTS>2020-07-01T09:00:00</creationTS><correlationIDs><vsnr>4711</vsnr></correlationIDs></event>", 
+               "type": "String"}
+  },
+  "resultEnabled" : true,
+  "variablesInResultEnabled" : true
+}
+
+
+
+### Send dispatching-Event
+# @name setEcVar_Forward
+Put /engine-rest/execution/{{sendMessage.response.body.$.[0].execution.id}}/localVariables/forward HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{"value" : false, "type": "Boolean"}
+
+### Send dispatching-Event
+# @name setEcVar_EventName
+Put /engine-rest/execution/{{sendMessage.response.body.$.[0].execution.id}}/localVariables/eventName HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{"value" : "event2", "type": "String"}
+
+
+### Send dispatching-Event
+# @name setEcVar_EventName
+Put /engine-rest/execution/68a71f28-c37e-11ea-b1a4-2cfda15b5349/localVariables/c4 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{"value" : "68a71f28-c37e-11ea-b1a4-2cfda15b5349", "type": "String"}
+
+
+
+
+### Send dispatching-Event
+# @name getExternalTasks
+GET /engine-rest/external-task HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Send dispatching-Event
+# @name getExternalTask
+GET /engine-rest/external-task/21113675-bb08-11ea-a723-d4d2521caa57 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+### Send dispatching-Event
+# @name completeExternalTask
+POST /engine-rest/external-task/21113675-bb08-11ea-a723-d4d2521caa57/complete HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+    {
+      "workerId": "demoWorker",
+      "localVariables":
+          {"forward": {"value": true}}
+    }
+
+### Unlock task
+# @name unlockTask
+POST /engine-rest/external-task/35ac7edf-bb0c-11ea-a723-d4d2521caa57/unlock HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+    {
+      "workerId": "demoWorker",
+      "localVariables":
+          {"forward": {"value": true}}
+    }
+
+
+### Send dispatching-Event
+# @name sendMessage
+POST /engine-rest/message HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "messageName" : "dispatchEvent",
+  "businessKey" : "4713",
+  "processVariablesLocal" : {
+    "forward" : {"value" : false, "type": "Boolean"},
+    "eventName" : {"value" : "event2", "type": "String"}
+  },
+  "resultEnabled" : true,
+  "variablesInResultEnabled" : true
+}
+
+### Send dispatching-Event
+# @name getExecutionContextVariables
+GET /engine-rest/execution/{{sendMessage.response.body.$.[0].execution.id}}/localVariables HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Send dispatching-Event
+# @name getExecutionContextVariables
+GET /engine-rest/execution/ HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+
+### Send dispatching-Event
+# @name sendSignal
+POST /engine-rest/signal HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "name" : "dispatchEvent"
+}
+
+
+
+### Send dispatching-Event
+POST /engine-rest/message HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "messageName" : "dispatchEvent",
+  "businessKey" : "4713",
+  "processVariables" : {
+    "event_2" : {"value" : "event2", "type": "String"}
+  },
+  "processVariablesLocal" : {
+    "forward" : {"value" : false, "type": "Boolean"}
+  },  
+  "resultEnabled" : true,
+  "variablesInResultEnabled" : true
+}
+
+
+### Send dispatching-Event
+POST /engine-rest/message HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "messageName" : "dispatchEvent",
+  "businessKey" : "4713",
+  "processVariablesLocal" : {
+    "event1Var" : {"value" : false, "type": "Boolean"}
+  },
+  "resultEnabled" : true
+}
+
+
+
+### Send dispatching-Event
+POST /engine-rest/message HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "messageName" : "forwardMessage",
+  "businessKey" : "4713",
+  "processVariables" : {
+    "forward" : {"value" : true}
+  },
+  "resultEnabled" : true
+}

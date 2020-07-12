@@ -13,3 +13,7 @@ Explizite Trennung von Prozessstart und reinreichen des Events zwischen Dispatch
 ### Szenario 5:  Mittlere Events sind vertauscht, Event bleibt aus.
 ### Szenario 6:  Abschlussevent kommt, vor mittleren Events, nicht relevant
 ### Szenario 7:  Abschlussevent kommt, vor mittleren Events, relevant
+
+# Nützliche Links
+https://forum.camunda.org/t/set-local-variables-in-event-subprocess-via-rest-api/13157/8
+https://forum.camunda.org/t/message-buffer-plugin/20456/14

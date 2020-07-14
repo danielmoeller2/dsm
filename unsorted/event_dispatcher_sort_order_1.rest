@@ -4,10 +4,8 @@ Host: localhost:8080
 Content-Type: application/json
 
 {
-	
  	"businessKey" : "4714"
 }
-
 
 ### Send unknown dispatching-Event
 # @name sendMessage
@@ -27,7 +25,7 @@ Content-Type: application/json
 }
 
 ### Send DSS Event
-# @name sendMessage
+# @name sendMessage_DSS
 POST /engine-rest/message HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
@@ -44,7 +42,7 @@ Content-Type: application/json
 }
 
 ### Send DMS Manager Event
-# @name sendMessage
+# @name sendMessage_DMSManager
 POST /engine-rest/message HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
